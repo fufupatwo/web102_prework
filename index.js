@@ -46,7 +46,7 @@ function addGamesToPage(games) {
         <p>Pledged: $${games[i].pledged.toLocaleString()}</p>
         <p>Goal: $${games[i].goal.toLocaleString()}</p>
         <p>Backers: ${games[i].backers}</p>
-        <img src="${games[i].img}" alt="${games[i].name}" />
+        <img src="${games[i].img}" alt="${games[i].name}" class="game-img" />
         `;
           // append the game to the games-container
         gamesContainer.appendChild(gameCard);
