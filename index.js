@@ -112,10 +112,10 @@ function filterFundedOnly() {
     deleteChildElements(gamesContainer);
 
     // use filter() to get a list of games that have met or exceeded their goal
-
+    const fundedGames = GAMES_JSON.filter(game => game.pledged >= game.goal);
 
     // use the function we previously created to add unfunded games to the DOM
-
+    addGamesToPage(fundedGames);
 }
 
 // show all games
@@ -123,13 +123,16 @@ function showAllGames() {
     deleteChildElements(gamesContainer);
 
     // add all games from the JSON data to the DOM
-
+    addGamesToPage(GAMES_JSON);
 }
 
 // select each button in the "Our Games" section
 const unfundedBtn = document.getElementById("unfunded-btn");
 const fundedBtn = document.getElementById("funded-btn");
 const allBtn = document.getElementById("all-btn");
+unfundedBtn.addEventListener("click", filterUnfundedOnly);
+fundedBtn.addEventListener("click", filterFundedOnly);
+allBtn.addEventListener("click", showAllGames);
 
 // add event listeners with the correct functions to each button
 
@@ -143,12 +146,34 @@ const allBtn = document.getElementById("all-btn");
 const descriptionContainer = document.getElementById("description-container");
 
 // use filter or reduce to count the number of unfunded games
+// Step 1
+const unfundedGamesCount = GAMES_JSON.filter(game => game.pledged < game.goal).length;
 
 
 // create a string that explains the number of unfunded games using the ternary operator
+// Step 2
+const moneyRaised = GAMES_JSON.reduce((total, game) => total + game.pledged, 0);
+const totalGamesCount = GAMES_JSON.length;
+
+const summaryString = `
+    ${moneyRaised.toLocaleString()} has been raised for ${totalGamesCount} games.
+    ${unfundedGamesCount > 0
+        ? `There ${unfundedGamesCount === 1 ? 'is' : 'are'} ${unfundedGamesCount} game${unfundedGamesCount === 1 ? '' : 's'} currently unfunded.`
+        : 'All games have been funded!'}
+`;
+
+console.log(summaryString);
 
 
 // create a new DOM element containing the template string and append it to the description container
+// Create a new paragraph element
+const summaryParagraph = document.createElement("p");
+
+// Set the inner HTML with the template string
+summaryParagraph.innerHTML = summaryString;
+
+// Append the paragraph element to the descriptionContainer
+descriptionContainer.appendChild(summaryParagraph);
 
 /************************************************************************************
  * Challenge 7: Select & display the top 2 games
@@ -163,7 +188,16 @@ const sortedGames =  GAMES_JSON.sort( (item1, item2) => {
 });
 
 // use destructuring and the spread operator to grab the first and second games
+const [firstGame, secondGame, ...restOfGames] = sortedGames;
 
 // create a new element to hold the name of the top pledge game, then append it to the correct element
+const firstGameElement = document.createElement("p");
+firstGameElement.textContent = `Top Game: ${firstGame.name}`;
 
-// do the same for the runner up item
+
+firstGameContainer.appendChild(firstGameElement);
+
+
+const secondGameElement = document.createElement("p");
+secondGameElement.textContent = `Second Top Game: ${secondGame.name}`;
+secondGameContainer.appendChild(secondGameElement);
