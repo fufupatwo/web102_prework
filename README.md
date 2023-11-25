@@ -45,8 +45,7 @@ Showcasing funded/unfunded games:
 
 ## Notes
 
-Describe any challenges encountered while building the app.
-
+It was fun learning about how useful reduce and filter is
 ## License
 
     Copyright [yyyy] [name of copyright owner]
