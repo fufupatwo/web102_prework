@@ -26,7 +26,18 @@ Here's a walkthrough of implemented features:
 <img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 <!-- Replace this with whatever GIF tool you used! -->
-GIF created with ...  
+GIF created with LICEcap
+
+Top of Page for Game Statistics:
+![game-stats](https://github.com/fufupatwo/web102_prework/assets/114861274/8680dde2-cd0c-4547-9d12-2c4793e1a0d8)
+
+
+
+
+
+Showcasing funded/unfunded games:
+![funded-unfunded](https://github.com/fufupatwo/web102_prework/assets/114861274/6c9c1e42-71a5-4eff-8fb3-e1adf31db98b)
+
 <!-- Recommended tools:
 [Kap](https://getkap.co/) for macOS
 [ScreenToGif](https://www.screentogif.com/) for Windows
